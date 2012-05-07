@@ -13,7 +13,7 @@ Software can register itself with mondae and provide an arbitrary number of metr
 
 The applications' configurations are stored in /etc/mondae/conf.d/applicationname.json in JSON format. The following is an example of an application configuration: 
 
-'''javascript
+```javascript
 object { 
 	name: 	"Application Name", 
 	object {
@@ -25,7 +25,14 @@ object {
 		administrator:	"bob@mycorp.com", 
 		}  
 }
-'''
+```
 
+There will certainly be refinements to the object definition as time goes on.
 
-There will certainly be refinements to the object definition as time goes on. 
+Monitoring Side
+---------------
+
+The monitoring system will need to be made aware of mondae through the normal technique of built-in checks (or the standard plugin interface). 
+
+The limitation of most current monitoring systems will become apparent as new applications are deployed and registered with mondae. Most current monitoring systems don't allow for dynamic object creation, and instead require the monitoring service to be restarted after configuration writing. In this case, the monitoring server will need to keep mondae in an abstracted service and parse out the various statuses independently. 
+
